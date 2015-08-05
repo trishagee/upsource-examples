@@ -2,13 +2,8 @@ package com.mechanitis.blog.upsource.social;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static com.mechanitis.demo.sense.mood.Mood.HAPPY;
-import static com.mechanitis.demo.sense.mood.Mood.SAD;
-import static com.mechanitis.demo.sense.twitter.TweetParser.getTweetMessageFrom;
 
 public class MoodAnalyser {
     private static final Map<String, String> WORD_TO_MOOD = new HashMap<>();
@@ -34,6 +29,7 @@ public class MoodAnalyser {
 
     public static String analyseMood(String tweet) {
         return Stream.of(tweet.split("\\s+"))
+                     .parallel()
                      .map(String::toLowerCase)
                      .map(WORD_TO_MOOD::get)
                      .filter(mood -> mood != null)
