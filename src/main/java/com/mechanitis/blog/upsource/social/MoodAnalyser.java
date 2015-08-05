@@ -32,6 +32,14 @@ public class MoodAnalyser {
         WORD_TO_MOOD.put("awful", "SAD");
     }
 
+    public static String analyseMood(String tweet) {
+        return Stream.of(tweet.split("\\s+"))
+                     .map(String::toLowerCase)
+                     .map(WORD_TO_MOOD::get)
+                     .filter(mood -> mood != null)
+                     .collect(Collectors.joining(","));
+    }
+
     private MoodAnalyser() {
     }
 }
