@@ -48,17 +48,17 @@ public class CustomerDao {
 
     public Customer getCustomerById(final int customerId) {
         Customer customer = null;
-        try {
-            Connection connection = database.getConnection();
-            Statement statement = connection.createStatement();
+        try (Connection connection = database.getConnection();
+             Statement statement = connection.createStatement()) {
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM Customers WHERE id = " + customerId);
-            rs.next();
-            customer = new Customer(
-                    customerId,
-                    rs.getString("first"),
-                    rs.getString("last")
-            );
+            try (ResultSet rs = statement.executeQuery("SELECT * FROM Customers WHERE id = " + customerId)) {
+                rs.next();
+                customer = new Customer(
+                        customerId,
+                        rs.getString("first"),
+                        rs.getString("last")
+                );
+            }
 
         } catch (SQLException e) {
             doDatabaseErrorHandling(e);
