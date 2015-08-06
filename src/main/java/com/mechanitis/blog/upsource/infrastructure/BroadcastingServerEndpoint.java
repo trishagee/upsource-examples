@@ -21,7 +21,9 @@ public class BroadcastingServerEndpoint<T> extends Endpoint {
     }
 
     public void onMessage(T message) {
-        LOGGER.log(Level.FINEST, String.format("Received message %s", message));
+        if (LOGGER.isLoggable(Level.FINEST)) {
+            LOGGER.log(Level.FINEST, String.format("Received message %s", message));
+        }
         sessions.stream()
                 .filter(Session::isOpen)
                 .forEach(session -> sendMessageToClient(message.toString(), session));
