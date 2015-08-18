@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerDao {
     private final Database database = new Database();
@@ -14,11 +15,10 @@ public class CustomerDao {
 
     public Customer getCustomerById(final int customerId) {
         if (customers != null) {
-            for (Customer customer : customers) {
-                if (customer.getId() == customerId) {
-                    return customer;
-                }
-            }
+            Optional<Customer> customerWithId = customers.stream()
+                                                         .filter(customer -> customer.getId() == customerId)
+                                                         .findFirst();
+            return customerWithId.orElse(getCustomerByIdFromDatabase(customerId));
         }
         return getCustomerByIdFromDatabase(customerId);
     }
