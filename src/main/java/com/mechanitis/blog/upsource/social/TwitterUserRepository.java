@@ -1,20 +1,18 @@
 package com.mechanitis.blog.upsource.social;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static java.util.Comparator.comparing;
 
 public class TwitterUserRepository {
-    private final List<TwitterUser> twitterUsers = new ArrayList<>();
+    private final Set<TwitterUser> twitterUsers = new TreeSet<>(comparing(TwitterUser::getTwitterHandle));
 
     public void addTwitterUser(TwitterUser twitterUser) {
         twitterUsers.add(twitterUser);
     }
 
-    public List<TwitterUser> getTwitterUsers() {
-        twitterUsers.stream().sorted(comparing(TwitterUser::getTwitterHandle));
-
+    public Set<TwitterUser> getTwitterUsers() {
         return twitterUsers;
     }
 }
