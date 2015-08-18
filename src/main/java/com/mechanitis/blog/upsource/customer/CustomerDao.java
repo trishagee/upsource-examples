@@ -29,7 +29,7 @@ public class CustomerDao {
         } else {
             customers = new ArrayList<>();
             try (Connection connection = database.getConnection();
-                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM Customers")) {
+                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM Customers ORDER BY id")) {
                 try (ResultSet rs = statement.executeQuery()) {
                     rs.next();
                     customers.add(new Customer(
