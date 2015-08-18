@@ -32,17 +32,21 @@ public class CustomerDao {
                  PreparedStatement statement = connection.prepareStatement("SELECT * FROM Customers ORDER BY id")) {
                 try (ResultSet rs = statement.executeQuery()) {
                     rs.next();
-                    customers.add(new Customer(
-                            rs.getInt("id"),
-                            rs.getString("first"),
-                            rs.getString("last")
-                    ));
+                    customers.add(extractCustomer(rs));
                 }
             } catch (SQLException e) {
                 doDatabaseErrorHandling(e);
             }
             return customers;
         }
+    }
+
+    private Customer extractCustomer(ResultSet rs) throws SQLException {
+        return new Customer(
+                rs.getInt("id"),
+                rs.getString("first"),
+                rs.getString("last")
+        );
     }
 
     public List<Integer> getAllCustomerIds() {
