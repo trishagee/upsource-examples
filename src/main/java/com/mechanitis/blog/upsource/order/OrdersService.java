@@ -5,10 +5,11 @@ import com.mechanitis.blog.upsource.customer.CustomerRepository;
 
 public class OrdersService {
     private OrdersDao ordersDao;
+    private CustomerRepository customerRepository;
 
     public void placeOrder(Order order) {
         ordersDao.saveOrder(order);
-        Customer customer = CustomerRepository.CUSTOMERS.get(order.getCustomerId());
+        Customer customer = customerRepository.get(order.getCustomerId());
         customer.incrementOrders();
     }
 }
