@@ -12,6 +12,17 @@ public class CustomerDao {
     private final Database database = new Database();
     private ArrayList<Customer> customers;
 
+    public Customer getCustomerById(final int customerId) {
+        if (customers != null) {
+            for (Customer customer : customers) {
+                if (customer.getId() == customerId) {
+                    return customer;
+                }
+            }
+        }
+        return getCustomerByIdFromDatabase(customerId);
+    }
+
     public List<Customer> getAllCustomers() {
         if (customers != null) {
             return customers;
@@ -47,10 +58,6 @@ public class CustomerDao {
             doDatabaseErrorHandling(e);
         }
         return customerIds;
-    }
-
-    public Customer getCustomerById(final int customerId) {
-        return getCustomerByIdFromDatabase(customerId);
     }
 
     private Customer getCustomerByIdFromDatabase(int customerId) {

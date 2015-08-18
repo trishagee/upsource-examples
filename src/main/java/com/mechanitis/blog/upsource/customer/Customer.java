@@ -5,6 +5,7 @@ public class Customer {
     private String firstName;
     private String lastName;
     private CustomerOrders orders;
+    private int id;
 
     public Customer(int customerId, String firstName, String lastName) {
         this.customerId = customerId;
@@ -14,5 +15,9 @@ public class Customer {
 
     public void incrementOrders() {
         orders.setNumberOfOrders(orders.getNumberOfOrders() + 1);
+    }
+
+    public int getId() {
+        return id;
     }
 }
