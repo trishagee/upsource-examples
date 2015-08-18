@@ -1,9 +1,9 @@
 package com.mechanitis.blog.upsource.social;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+
+import static java.util.Comparator.comparing;
 
 public class TwitterUserRepository {
     private final List<TwitterUser> twitterUsers = new ArrayList<>();
@@ -13,11 +13,7 @@ public class TwitterUserRepository {
     }
 
     public List<TwitterUser> getTwitterUsers() {
-        Collections.sort(twitterUsers, new Comparator<TwitterUser>() {
-            public int compare(TwitterUser o1, TwitterUser o2) {
-                return o1.getTwitterHandle().compareTo(o2.getTwitterHandle());
-            }
-        });
+        twitterUsers.stream().sorted(comparing(TwitterUser::getTwitterHandle));
 
         return twitterUsers;
     }
