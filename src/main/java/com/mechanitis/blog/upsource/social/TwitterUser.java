@@ -10,4 +10,8 @@ public class TwitterUser {
     public void addMessage(String tweet) {
 
     }
+
+    public String getTwitterHandle() {
+        return twitterHandle;
+    }
 }
