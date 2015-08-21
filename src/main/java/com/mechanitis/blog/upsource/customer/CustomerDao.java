@@ -18,7 +18,7 @@ public class CustomerDao {
             Optional<Customer> customerWithId = customers.stream()
                                                          .filter(customer -> customer.getId() == customerId)
                                                          .findFirst();
-            return customerWithId.orElse(getCustomerByIdFromDatabase(customerId));
+            return customerWithId.orElseGet(() -> getCustomerByIdFromDatabase(customerId));
         }
         return getCustomerByIdFromDatabase(customerId);
     }
