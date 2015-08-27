@@ -14,4 +14,8 @@ public class TwitterUser {
     public String getTwitterHandle() {
         return twitterHandle;
     }
+
+    public int getNumberOfTweets() {
+        return 0;
+    }
 }
