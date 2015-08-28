@@ -84,7 +84,7 @@ public class CustomerDao {
         return customer;
     }
 
-    private void doDatabaseErrorHandling(Exception e) {
+    static void doDatabaseErrorHandling(Exception e) {
         e.printStackTrace();
     }
 
