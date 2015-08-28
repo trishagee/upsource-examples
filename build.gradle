@@ -11,5 +11,6 @@ repositories {
 
 dependencies {
     compile 'org.eclipse.jetty.websocket:javax-websocket-server-impl:9.2.6.v20141205'
+    compile 'org.mockito:mockito-all:1.10.19'
     testCompile 'junit:junit:4.11'
 }
