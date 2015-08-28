@@ -87,4 +87,17 @@ public class CustomerDao {
     private void doDatabaseErrorHandling(Exception e) {
         e.printStackTrace();
     }
+
+    public void saveCustomer(Customer customer) {
+        try (Connection connection = database.getConnection();
+             Statement statement = connection.createStatement()) {
+            statement.execute("INSERT INTO Customers"
+                              + "(id, first_name, last_name)"
+                              + "VALUES"
+                              + "(" + customer.getId() + ", " + customer.getFirstName() + ", " + customer.getLastName()
+                              + ");");
+        } catch (SQLException e) {
+            doDatabaseErrorHandling(e);
+        }
+    }
 }

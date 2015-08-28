@@ -34,4 +34,12 @@ public class Customer {
     public void addBalanceToWallet(BigDecimal price) {
 
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }
