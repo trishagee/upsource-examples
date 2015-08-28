@@ -1,5 +1,7 @@
 package com.mechanitis.blog.upsource.customer;
 
+import java.math.BigDecimal;
+
 public class Customer {
     private int customerId;
     private String firstName;
@@ -27,5 +29,9 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void addBalanceToWallet(BigDecimal price) {
+
     }
 }

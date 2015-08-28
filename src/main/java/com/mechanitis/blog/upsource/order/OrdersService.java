@@ -7,7 +7,7 @@ public class OrdersService {
     private OrdersDao ordersDao;
     private CustomerRepository customerRepository;
 
-    public void placeOrder(Order order) {
+    public void placeOrder(BookOrder order) {
         ordersDao.saveOrder(order);
         Customer customer = customerRepository.get(order.getCustomerId());
         customer.incrementOrders();
