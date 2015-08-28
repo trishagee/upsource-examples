@@ -1,6 +1,6 @@
 package com.mechanitis.blog.upsource.order;
 
-public class BookOrder implements Order {
+public class BookOrder extends Order {
     private int customerId;
     private int bookId;
 
@@ -13,7 +13,7 @@ public class BookOrder implements Order {
     }
 
     @Override
-    public void placeOrder(Warehouse warehouse) {
-        warehouse.itemSold(bookId);
+    protected int getItemId() {
+        return bookId;
     }
 }

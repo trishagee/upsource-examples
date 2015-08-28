@@ -1,15 +1,14 @@
 package com.mechanitis.blog.upsource.order;
 
-public class ElectronicsOrder implements Order {
+public class ElectronicsOrder extends Order {
     private int itemId;
 
     public ElectronicsOrder(int itemId) {
-
         this.itemId = itemId;
     }
 
     @Override
-    public void placeOrder(Warehouse warehouse) {
-        warehouse.itemSold(itemId);
+    protected int getItemId() {
+        return itemId;
     }
 }

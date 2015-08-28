@@ -1,5 +1,10 @@
 package com.mechanitis.blog.upsource.order;
 
-public interface Order {
-    void placeOrder(Warehouse warehouse);
+public abstract class Order {
+    public void placeOrder(Warehouse warehouse) {
+        warehouse.itemSold(getItemId());
+        // do other order-related activities...
+    }
+
+    protected abstract int getItemId();
 }
