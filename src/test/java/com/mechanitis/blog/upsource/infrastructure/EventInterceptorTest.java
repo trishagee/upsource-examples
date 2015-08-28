@@ -12,6 +12,7 @@ public class EventInterceptorTest {
         Event event = new PostLoad();
 
         eventInterceptor.interceptEvent(event, "String");
+
     }
 
 }
