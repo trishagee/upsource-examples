@@ -1,0 +1,14 @@
+package com.mechanitis.blog.upsource.customer;
+
+import org.junit.Test;
+
+public class CustomerDaoTest {
+    @Test
+    public void shouldCoverage() {
+        CustomerDao customerDao = new CustomerDao();
+        customerDao.getAllCustomerIds();
+        customerDao.getAllCustomers();
+        customerDao.getCustomerById(1);
+    }
+
+}
