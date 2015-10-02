@@ -6,13 +6,12 @@ import org.junit.Test;
 
 public class EventInterceptorTest {
     @Test
-    public void should() {
+    public void shouldCallSpecificEventInterceptorWithSubclass() {
         EventInterceptor eventInterceptor = new EventInterceptor();
 
         Event event = new PostLoad();
 
         eventInterceptor.interceptEvent(event, "String");
-
     }
 
 }
