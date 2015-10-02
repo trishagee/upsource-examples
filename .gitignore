@@ -1,2 +1,4 @@
-.idea
+#.idea
 upsource-examples.iml
+.idea/libraries
+.idea/artifacts
