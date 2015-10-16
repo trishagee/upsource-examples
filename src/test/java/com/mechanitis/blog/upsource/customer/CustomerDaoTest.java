@@ -8,6 +8,7 @@ public class CustomerDaoTest {
         CustomerDao customerDao = new CustomerDao();
         customerDao.getAllCustomerIds();
         customerDao.getCustomerById(1);
+        customerDao.getAllCustomers();
     }
 
 }

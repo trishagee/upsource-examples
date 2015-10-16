@@ -35,7 +35,6 @@ public class CustomerDao {
                     customers.add(extractCustomer(rs));
                 }
             } catch (SQLException e) {
-                doDatabaseErrorHandling(e);
             }
             return customers;
         }
