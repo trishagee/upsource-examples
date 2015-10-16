@@ -5,11 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CustomerDao {
+    private static final Logger LOGGER = Logger.getLogger(CustomerDao.class.getName());
+
     private final Database database = new Database();
     private ArrayList<Customer> customers;
 
@@ -35,6 +40,7 @@ public class CustomerDao {
                     customers.add(extractCustomer(rs));
                 }
             } catch (SQLException e) {
+                LOGGER.log(Level.WARNING, String.format("Error querying the database %s"));
             }
             return customers;
         }
