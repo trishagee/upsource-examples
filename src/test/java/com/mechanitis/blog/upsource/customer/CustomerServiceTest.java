@@ -7,7 +7,6 @@ public class CustomerServiceTest {
     public void shouldCoverage() {
         CustomerService customerService = new CustomerService(null);
         customerService.addCustomer(1, null, null);
-        customerService.placeOrder(null, null);
     }
 
 }

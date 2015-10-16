@@ -7,7 +7,6 @@ public class CustomerDaoTest {
     public void shouldCoverage() {
         CustomerDao customerDao = new CustomerDao();
         customerDao.getAllCustomerIds();
-        customerDao.getAllCustomers();
         customerDao.getCustomerById(1);
     }
 

@@ -1,6 +1,5 @@
 package com.mechanitis.blog.upsource.customer;
 
-import com.mechanitis.blog.upsource.order.Order;
 import com.mechanitis.blog.upsource.order.Warehouse;
 
 import java.sql.Connection;
@@ -31,11 +30,6 @@ public class CustomerService {
         } catch (SQLException e) {
             doDatabaseErrorHandling(e);
         }
-    }
-
-    public void placeOrder(Customer customer, Order order) {
-        customer.incrementOrders();
-        order.placeOrder(getWarehouse());
     }
 
     private Warehouse getWarehouse() {
