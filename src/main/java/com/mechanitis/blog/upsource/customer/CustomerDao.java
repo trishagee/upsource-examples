@@ -17,7 +17,7 @@ public class CustomerDao {
     private final Database database = new Database();
     private ArrayList<Customer> customers;
 
-    public Customer getCustomerById(final int customerId) {
+    public Customer getCustomerById(final int customerId) throws CustomerNotFoundException {
         if (customersListIsAvailable() == true) {
             Optional<Customer> customerWithId = customers.stream()
                                                          .filter(customer -> customer.getId() == customerId)
@@ -72,7 +72,7 @@ public class CustomerDao {
         return customerIds;
     }
 
-    private Customer getCustomerByIdFromDatabase(int customerId) {
+    private Customer getCustomerByIdFromDatabase(int customerId) throws CustomerNotFoundException {
         Customer customer = null;
         try (Connection connection = database.getConnection();
              Statement statement = connection.createStatement()) {
@@ -87,7 +87,7 @@ public class CustomerDao {
             }
 
         } catch (SQLException e) {
-            doDatabaseErrorHandling(e);
+            throw new CustomerNotFoundException();
         }
         return customer;
     }
