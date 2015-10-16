@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +18,7 @@ public class CustomerDao {
     private ArrayList<Customer> customers;
 
     public Customer getCustomerById(final int customerId) {
-        if (customers != null) {
+        if (customersListIsAvailable() == true) {
             Optional<Customer> customerWithId = customers.stream()
                                                          .filter(customer -> customer.getId() == customerId)
                                                          .findFirst();
@@ -28,8 +27,12 @@ public class CustomerDao {
         return getCustomerByIdFromDatabase(customerId);
     }
 
+    private boolean customersListIsAvailable() {
+        return customers != null;
+    }
+
     public List<Customer> getAllCustomers() {
-        if (customers != null) {
+        if (customersListIsAvailable()) {
             return customers;
         } else {
             customers = new ArrayList<>();
