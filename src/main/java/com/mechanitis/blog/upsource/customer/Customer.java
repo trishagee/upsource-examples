@@ -1,6 +1,8 @@
 package com.mechanitis.blog.upsource.customer;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
     private int customerId;
@@ -14,7 +16,8 @@ public class Customer {
     }
 
     public void addBalanceToWallet(BigDecimal price) {
-
+        List<Integer> list = new ArrayList<>();
+        list.remove("");
     }
 
     public String getFirstName() {
